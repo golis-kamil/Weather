@@ -22,22 +22,24 @@ import sda.code.weathermodel.Weather_;
 
 public class WeatherApp {
 
-	private static final String APPID ="1f81d97565a7021d5119e8df69ab9313";
-	private static final String ADRES_API = "http://api.openweathermap.org/data/2.5/weather";
+	// private static final String APPID ="1f81d97565a7021d5119e8df69ab9313";
+	// private static final String ADRES_API =
+	// "http://api.openweathermap.org/data/2.5/weather";
 	public static void main(String[] args) {
 
 		String json = null;
-		URI uri=null;
-		
+		URI uri = null;
+
 		CityQuery cityQuery = new CityQuery("Lodz");
-		
+
 		System.out.println("Aplikacja pogodowa.");
 
-		uri = getUri(cityQuery);
-		json = getDataFromApi(uri);
+		uri = UriHelper.getUri(cityQuery);
+		json = ApiHelper.getDataFromApi(uri);
 		Weather weather = null;
 		show(json);
 	}
+
 	private static void show(String json) {
 		Weather weather;
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
@@ -56,9 +58,9 @@ public class WeatherApp {
 			System.out.println(weather.getName());
 		}
 		if (weather.getWeather() != null && !weather.getWeather().isEmpty()) {
-			//Dla test�w wykorzystanie strumieni.
+			// Dla test�w wykorzystanie strumieni.
 			weather.getWeather().stream().forEach(x -> System.out.println(x.getDescription()));
-			//To samo co wy�ej ale za pomoc� foreach.
+			// To samo co wy�ej ale za pomoc� foreach.
 			// for (Weather_ w : weather.getWeather()) {
 			// // System.out.println(weather.getWeather().get(0));
 			// System.out.println(w.getDescription());
@@ -68,38 +70,6 @@ public class WeatherApp {
 			System.out.println(weather.getMain().getTemp());
 		}
 	}
-	private static String getDataFromApi(URI uri) {
-		CloseableHttpClient httpclient = HttpClients.createDefault();
-		String json = null;
-		HttpGet httpGet = new HttpGet(uri);
 
-		try (CloseableHttpResponse response = httpclient.execute(httpGet)) {
-			System.out.println(response.getStatusLine());
-			HttpEntity entity = response.getEntity();
-			json = EntityUtils.toString(entity, "UTF-8");
-			EntityUtils.consume(entity);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return json;
-	}
-	private static URI getUri(CityQuery city) {
-		URI uri = null;
-		try {
-			uri = new URIBuilder(ADRES_API)
-//					.setScheme("http")
-//			        .setHost("api.openweathermap.org")
-//			        .setPath("/data/2.5/weather")
-			        .setParameter("q", city.toString())
-			        .setParameter("units", "metric")
-			        .setParameter("lang", "pl")
-			        .setParameter("appid", APPID)
-			        .build();
-				
-		} catch (URISyntaxException e1) {
-			e1.printStackTrace();
-			return null;
-		}
-		return uri;
-	}
+	
 }
