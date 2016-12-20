@@ -13,8 +13,8 @@ public class SettingsTest {
 	@Test
 	public void loadingConfig() {
 		// fail("Uncomment test");
-		assertEquals("http://api.openweathermap.org/data/2.5/weather", Settings.CONFIG.getAdress());
-		assertEquals("1f81d97565a7021d5119e8df69ab9313",Settings.CONFIG.getApiId());
+        assertEquals("http://api.openweathermap.org/data/2.5/weather", Settings.CONFIG.getAddress());
+        assertEquals("1f81d97565a7021d5119e8df69ab9313",Settings.CONFIG.getApiId());
 	}
 	
 	@Test
