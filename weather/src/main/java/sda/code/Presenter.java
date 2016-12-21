@@ -5,12 +5,7 @@ import sda.code.weathermodel.Weather;
 public class Presenter {
 
     public static void show(Weather weather) {
-        //Weather weather = new DeserializeJson().getWeatherFromJson(json).get();
 
-//        if (weather == null) {
-//            System.err.println("Nie udało się zdeserializować odpowiedzi.");
-//            return;
-//        }
         if (weather.getName() != null) {
             System.out.println(weather.getName());
         }
@@ -20,5 +15,7 @@ public class Presenter {
         if (weather.getMain() != null) {
             System.out.println(weather.getMain().getTemp());
         }
+
     }
+
 }

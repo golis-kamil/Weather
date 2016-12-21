@@ -1,4 +1,4 @@
-package sda.code;
+package sda.code.settings;
 
 public enum SettingsDefaults {
     APPLICATION_ID("appId"),

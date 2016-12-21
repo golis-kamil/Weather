@@ -1,4 +1,4 @@
-package sda.code;
+package sda.code.settings;
 
 public enum Language {
     POLISH("PL"), GERMAN("DE"), ENGLISH("EN");

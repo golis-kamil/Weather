@@ -1,6 +1,5 @@
-package sda.code;
+package sda.code.settings;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;

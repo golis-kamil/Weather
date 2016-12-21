@@ -6,6 +6,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.junit.Test;
+import sda.code.helpers.UriHelper;
+import sda.code.settings.Settings;
 
 
 public class SettingsTest {
@@ -25,6 +27,6 @@ public class SettingsTest {
 	@Test
 	public void testUri() throws URISyntaxException {
 		URI uri = new URI("http://api.openweathermap.org/data/2.5/weather?q=Lodz&units=metric&lang=pl&appid=1f81d97565a7021d5119e8df69ab9313");
-		assertEquals(uri,UriHelper.getUri(new CityQuery("Lodz")));
-	}
+        assertEquals(uri, UriHelper.getUri(new CityQuery("Lodz")));
+    }
 }

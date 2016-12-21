@@ -1,10 +1,12 @@
-package sda.code;
+package sda.code.helpers;
+
+import org.apache.http.client.utils.URIBuilder;
+import sda.code.CityQuery;
+import sda.code.settings.Settings;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
-
-import org.apache.http.client.utils.URIBuilder;
 
 public class UriHelper {
 

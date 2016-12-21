@@ -1,4 +1,3 @@
-
 package sda.code.weathermodel;
 
 import com.google.gson.annotations.Expose;
