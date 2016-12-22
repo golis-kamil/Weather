@@ -1,4 +1,6 @@
-package sda.code;
+package sda.code.strategy;
+
+import sda.code.CityQuery;
 
 /**
  * Created by trot on 21.12.16.

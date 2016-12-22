@@ -16,6 +16,8 @@ public class DeserializeJson {
         if (json == null || json.isEmpty()) {
             System.out.println("Brak odpowiedzi z serwera.");
             return Optional.empty();
+        } else if (json.equals("{\"cod\":\"502\",\"message\":\"Error: Not found city\"}")) {
+            return Optional.empty();
         }
         Weather weather = gson.fromJson(json, Weather.class);
         return Optional.ofNullable(weather);

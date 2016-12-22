@@ -2,6 +2,7 @@ package sda.code;
 
 import sda.code.clients.AsyncClient;
 import sda.code.clients.SyncClient;
+import sda.code.strategy.Client;
 
 public class WeatherApp {
 
@@ -12,9 +13,12 @@ public class WeatherApp {
         System.out.println("Aplikacja pogodowa.");
 
         Client client = new Client(new SyncClient());
-        client.getWeather(cityQuery);
+        client.setCity(cityQuery);
+        client.getWeather();
 
         client = new Client(new AsyncClient());
-        client.getWeather(new CityQuery("Kutno", "PL"));
+        client.setCity("Kutno", "PL");
+        client.getWeather();
+
     }
 }

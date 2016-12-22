@@ -33,33 +33,33 @@ public enum Settings {
 
     public String getDefaultCity() {
         return Optional.ofNullable(props.getProperty(SettingsDefaults.DEFAULT_CITY.getValue()))
-                .orElse(SettingsDefaults.DEFAULT_CITY_VALUE.getValue()).toString();
+                .orElse(SettingsDefaults.DEFAULT_CITY_VALUE.getValue()).toString().toLowerCase();
     }
 
     public String getDefaultLanguage() {
         String lang = Optional.ofNullable(props.getProperty(SettingsDefaults.DEFAULT_LANG.getValue()))
-                .orElse(SettingsDefaults.DEFAULT_LANG_VALUE.getValue()).toString();
-        switch (lang.toLowerCase()) {
+                .orElse(SettingsDefaults.DEFAULT_LANG_VALUE.getValue()).toString().toLowerCase();
+        switch (lang) {
             case "polish":
-                return Language.POLISH.setLanguage();
+                return Language.POLISH.setLanguage().toLowerCase();
 
             case "german":
-                return Language.GERMAN.setLanguage();
+                return Language.GERMAN.setLanguage().toLowerCase();
 
             default:
-                return Language.ENGLISH.setLanguage();
+                return Language.ENGLISH.setLanguage().toLowerCase();
         }
     }
 
     public String getDefaultUnits() {
         String units = Optional.ofNullable(props.getProperty(SettingsDefaults.DEFAULT_UNITS.getValue()))
-                .orElse(SettingsDefaults.DEFAULT_UNITS_VAL.getValue()).toString();
-        switch (units.toLowerCase()) {
+                .orElse(SettingsDefaults.DEFAULT_UNITS_VAL.getValue()).toString().toLowerCase();
+        switch (units) {
             case "imperial":
-                return Units.IMPERIAL.toString();
+                return Units.IMPERIAL.toString().toLowerCase();
 
             default:
-                return Units.METRIC.toString();
+                return Units.METRIC.toString().toLowerCase();
         }
     }
 }
