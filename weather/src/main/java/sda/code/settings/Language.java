@@ -9,7 +9,7 @@ public enum Language {
         this.lang = lang;
     }
 
-    public String setLanguage() {
+    public String getLanguage() {
         return lang;
     }
 

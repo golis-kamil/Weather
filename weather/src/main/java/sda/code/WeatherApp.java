@@ -2,6 +2,7 @@ package sda.code;
 
 import sda.code.clients.AsyncClient;
 import sda.code.clients.SyncClient;
+import sda.code.settings.Settings;
 import sda.code.strategy.Client;
 
 public class WeatherApp {
@@ -16,9 +17,12 @@ public class WeatherApp {
         client.setCity(cityQuery);
         client.getWeather();
 
-        client = new Client(new AsyncClient());
-        client.setCity("Kutno", "PL");
+        client = new Client(Settings.CONFIG.getDefaultClient());
+        client.setCity("Dresden", "DE");
         client.getWeather();
+
+        Client anotherClient = new Client();
+        anotherClient.getWeather();
 
     }
 }

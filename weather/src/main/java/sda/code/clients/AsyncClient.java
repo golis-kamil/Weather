@@ -13,6 +13,7 @@ public class AsyncClient implements ClientStrategy {
 
     public AsyncClient() {
         this.weatherClient = new WeatherClient();
+        throw new UnsupportedOperationException("Klient asynchroniczny nie jest jeszcze zaimplementowany.");
     }
 
     @Override

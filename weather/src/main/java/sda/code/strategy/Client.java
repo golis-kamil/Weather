@@ -1,6 +1,7 @@
 package sda.code.strategy;
 
 import sda.code.CityQuery;
+import sda.code.settings.Settings;
 import sda.code.settings.SettingsDefaults;
 
 /**
@@ -12,7 +13,15 @@ public class Client {
     private CityQuery cityQuery;
 
     public Client(ClientStrategy strategy) {
+        if (strategy == null) {
+            throw new IllegalArgumentException("Nie okreslono rodzaju klienta");
+        }
+
         this.strategy = strategy;
+    }
+
+    public Client() {
+        this.strategy = Settings.CONFIG.getDefaultClient();
     }
 
     public void setCity(String city) {

@@ -31,6 +31,7 @@ public class HttpClientApi {
             }
 //            System.out.println(response.getStatusLine());
         } catch (IOException e) {
+            System.err.println("Blad odczytu z serwera.");
             e.printStackTrace();
             return Optional.empty();
         }

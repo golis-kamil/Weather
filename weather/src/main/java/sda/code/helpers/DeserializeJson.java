@@ -9,14 +9,13 @@ import java.util.Optional;
 
 public class DeserializeJson {
 
-    //private static Gson gson = null;
-
     public static Optional<Weather> getWeatherFromJson(String json) {
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         if (json == null || json.isEmpty()) {
             System.out.println("Brak odpowiedzi z serwera.");
             return Optional.empty();
         } else if (json.equals("{\"cod\":\"502\",\"message\":\"Error: Not found city\"}")) {
+            System.out.println("Nie znalezniono takiego miasta.");
             return Optional.empty();
         }
         Weather weather = gson.fromJson(json, Weather.class);

@@ -24,6 +24,7 @@ public class UriHelper {
                     .build();
 
         } catch (URISyntaxException e1) {
+            System.err.println("Niepoprawny format adresu.");
             e1.printStackTrace();
             return Optional.empty();
 

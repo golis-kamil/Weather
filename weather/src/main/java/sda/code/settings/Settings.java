@@ -1,5 +1,9 @@
 package sda.code.settings;
 
+import sda.code.clients.AsyncClient;
+import sda.code.clients.SyncClient;
+import sda.code.strategy.ClientStrategy;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
@@ -11,7 +15,7 @@ public enum Settings {
     private final Properties props;
     private InputStream config = null;
 
-    private Settings() {
+    Settings() {
         props = new Properties();
         config = Settings.class.getResourceAsStream("/default.conf");
         try {
@@ -41,13 +45,13 @@ public enum Settings {
                 .orElse(SettingsDefaults.DEFAULT_LANG_VALUE.getValue()).toString().toLowerCase();
         switch (lang) {
             case "polish":
-                return Language.POLISH.setLanguage().toLowerCase();
+                return Language.POLISH.getLanguage().toLowerCase();
 
             case "german":
-                return Language.GERMAN.setLanguage().toLowerCase();
+                return Language.GERMAN.getLanguage().toLowerCase();
 
             default:
-                return Language.ENGLISH.setLanguage().toLowerCase();
+                return Language.ENGLISH.getLanguage().toLowerCase();
         }
     }
 
@@ -60,6 +64,18 @@ public enum Settings {
 
             default:
                 return Units.METRIC.toString().toLowerCase();
+        }
+    }
+
+    public ClientStrategy getDefaultClient() {
+        String client = Optional.ofNullable(props.getProperty(SettingsDefaults.DEFAULT_CLIENT.getValue()))
+                .orElse(SettingsDefaults.DEFAULT_CLIENT_VAL.getValue()).toString().toLowerCase();
+        switch (client) {
+            case "async":
+                return new AsyncClient();
+
+            default:
+                return new SyncClient();
         }
     }
 }
